@@ -12,7 +12,7 @@
 
       <!-- NAV MIDDLE -->
       <div
-       class="flex">
+       class="flex hidden lg:flex">
         <button v-for="tab in tabs"
           :key="tab.id"
           @click="updateDropdown(tab.id)"
@@ -21,6 +21,10 @@
         >
           <i :class="`${tab.icon} text-gray-700 mx-8 text-xl ${dropdown === tab.id ? 'text-blue-700' : ''}`"></i>
         </button>
+      </div>
+
+      <div class="flex md:flex lg:hidden">
+        <i class="fas fa-bars"></i>
       </div>
 
       <!-- NAV RIGHT -->
