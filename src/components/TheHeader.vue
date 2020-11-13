@@ -19,8 +19,8 @@
             <!-- BARS MENU -->
         <div class="lg:hidden">
           <button 
-            :class="`flex md:flex ml-4 text-gray-700 hover:bg-gray-200 p-2 rounded-full focus:outline-none ${dropdown === 'bars' ? 'text-blue-700' : ''}`"
-            @click="updateDropdown('bars')"
+            :class="`flex md:flex mx-2 text-gray-700 hover:bg-gray-200 p-2 rounded-full focus:outline-none ${dropdown === 'bars' ? 'text-blue-700' : ''}`"
+            @click="updateDropdown('sidebar')"
             >
               <i class="fas fa-bars text-2xl justify-start"></i>
           </button>
@@ -31,15 +31,15 @@
       <!-- NAV MIDDLE -->
       <div
        class="hidden lg:flex justify-between items-center">
-        <button v-for="tab in tabs"
+        <router-link v-for="tab in tabs"
           :key="tab.id"
-          @click="updateDropdown(tab.id)"
+          :to="tab.id"
           class="hover:bg-gray-200 rounded focus:outline-none py-2"
-          :class="dropdown === tab.id ? 'border-b-4 border-blue-600' : ''"
         >
           <i :class="`${tab.icon} text-gray-700 mx-8 text-xl ${dropdown === tab.id ? 'text-blue-700' : ''}`"></i>
-        </button>
+        </router-link>
       </div>
+          
 
 
       <!-- NAV RIGHT -->
@@ -87,9 +87,8 @@
     ></search-menu>
 
      <sidebar-menu 
-    class="absolute top-0 left-0"
+    class="absolute top-0 left-0 mt-16"
     v-if="dropdown === 'sidebar'"
-    @update-dropdown="updateDropdown('')"
     ></sidebar-menu>
 
   </header>
@@ -137,6 +136,7 @@ export default {
 
       id: 'home',
       dropdown: false,
+      url: '/'
     }
   },
   methods: {
@@ -146,6 +146,10 @@ export default {
       } else if(this.dropdown === name) {
         return this.dropdown = ''
       } 
+    },
+    updateUrl(id) {
+      console.log(String(id));
+      return this.url = String(id)
     }
   }
 }

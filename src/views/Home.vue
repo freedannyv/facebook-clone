@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-sidebar
-    
+    class="hidden md:w-1/3 lg:w-1/5 p-2 md:block"
     :userName=userName
     :secondUserName=secondUserName
     ></app-sidebar>

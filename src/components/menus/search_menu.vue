@@ -32,7 +32,14 @@
         <img :src="getImgUrl(search.id)" class="rounded-full h-8 w-8 object-cover mr-2" />
         <p class="font-semibold text-gray-800">{{ shorten(search.name) }}</p>
       </div>
-        <button class="btn focus:outline-none"><i class="fas fa-times"></i></button>
+
+      <!-- Delete button -->
+        <button 
+        class="btn focus:outline-none"
+        @click="deleteUser(search.id)"
+        ><i 
+        class="fas fa-times"
+        ></i></button>
     </button>
 
   </base-card>
@@ -55,10 +62,15 @@ export default {
         return name;
       }
     },
+    
     getImgUrl(id) {
     return require('../../assets/'+id+'.jpg')
+    },
+    
+    deleteUser(id) {
+      return this.Searches = this.Searches.filter(item => item.id != id);
     }
-  },
+  }
 }
 </script>
 
