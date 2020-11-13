@@ -9,12 +9,16 @@
         <i class="fas fa-search bg-gray-200 p-3 rounded-full lg:rounded-r-none md:rounded-l-full cursor-pointer"
         @click="updateDropdown('search')"
         ></i>
+
+        <!-- NEW SEARCH -->
+        <form @submit.prevent="makeSearch">
         <input 
         type="text" 
-        placeholder="Search Facebook" 
+        placeholder="Search Facebook"
+        v-model="searchValue" 
         class="bg-gray-200 rounded-r-full py-2 focus:outline-none lg:w-64 w-0 text-gray-900"
         @click="updateDropdown('search')"
-        >
+        ></form>
       
             <!-- BARS MENU -->
         <div class="lg:hidden">
@@ -104,6 +108,7 @@ import Messenger from '../components/menus/Dd_Messenger'
 import Create from '../components/menus/Dd_Create'
 import SearchMenu from '../components/menus/search_menu'
 import SideBar from './Sidebar'
+import Searches from '../search_library'
 
 
 export default {
@@ -114,6 +119,7 @@ export default {
     'my-create': Create,
     'search-menu': SearchMenu,
     'sidebar-menu': SideBar,
+    
   },
   data() {
     return {
@@ -136,7 +142,9 @@ export default {
 
       id: 'home',
       dropdown: false,
-      url: '/'
+      url: '/',
+      searchValue: '',
+      Searches
     }
   },
   methods: {
@@ -150,6 +158,21 @@ export default {
     updateUrl(id) {
       console.log(String(id));
       return this.url = String(id)
+    },
+
+    makeSearch() {
+      let newName = this.searchValue;
+      // let newId = this.randomNum();
+
+      const newSearch = {
+        id: 'ale',
+        name: newName
+      };
+      this.Searches.push(newSearch);
+      this.searchValue = ''
+    },
+    randomNum() {
+      return Math.floor(Math.random() * 10000)
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <base-card 
-  class="absolute top-0 left-0">
+  class="absolute top-0 left-0 mt-16">
 
   <!-- Back Button and Search Field -->
   <div class="flex items-center">
@@ -11,10 +11,7 @@
     ><i class="fas fa-arrow-left"></i>
     </button>
     
-    <input type="text" 
-    placeholder="Search Facebook"
-    class="ml-2 bg-gray-200 rounded-full p-2 focus:outline-none text-gray-900"
-    >
+
     </div>
 
     <!-- Recent Searches -->
@@ -51,7 +48,7 @@ import Searches from '../../search_library'
 export default {
   data() {
     return {
-      Searches
+      Searches,
     }
   },
   methods: {
@@ -69,7 +66,7 @@ export default {
     
     deleteUser(id) {
       return this.Searches = this.Searches.filter(item => item.id != id);
-    }
+    },
   }
 }
 </script>

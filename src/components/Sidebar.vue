@@ -1,7 +1,7 @@
 <template>
 
 <!-- WRAPPER -->
-  <div class="w-full p-2">
+  <div class="w-full p-2 bg-gray-100">
   
     <!-- NAME AND PROFILE PIC -->
     <button class="flex items-center w-full hover:bg-gray-200 focus:outline-none rounded py-3 px-2">
@@ -24,9 +24,9 @@
 
     <!-- See More -->
     <button
-    @click="seeMore = !seeMore"
+    @click="showSideBar"
     class="flex items-center w-full hover:bg-gray-200 focus:outline-none rounded p-2 font-semibold border-b border-gray-500"
-    ><i class="fas fa-chevron-down text-sm mr-2 p-2 bg-gray-300 rounded-full"></i>See more</button>
+    ><i :class="`${ seeMore === true ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} text-sm mr-2 p-2 bg-gray-300 rounded-full`"></i>{{ seeMore === true ? 'See Less' : 'See More'}}</button>
   </div>
 
 </template>
@@ -41,7 +41,18 @@ export default {
       seeMore: false
     }
   },
+  methods: {
+    showSideBar() {
+     return this.seeMore = !this.seeMore;
+  
+    }
+  },
 
+  // computed: {
+  //   firstFiveInSidebar: function() {
+  //     return this.SideBarData.slice(0,4)
+  //   }
+  // },
   props: ['userName', 'secondUserName']
 }
 </script>
