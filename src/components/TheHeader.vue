@@ -1,35 +1,50 @@
 <template>
   <header class="relative">
-    <nav class="w-full shadow-md flex justify-between px-6 py-2">
+    <nav class="w-full shadow-md flex justify-between px-6 py-2 items-center">
       <!-- NAV LEFT -->
       <div class="flex items-center">
         <i class="fab fa-facebook fa-2x text-blue-700 mr-4"></i>
 
-        <i class="fas fa-search bg-gray-200 p-3 rounded-full lg:rounded-r-none md:rounded-l-full cursor-pointer"></i>
-
-        <input type="text" placeholder="Search Facebook" class="bg-gray-200 rounded-r-full py-2 focus:outline-none lg:w-64 w-0 text-gray-900">
+      
+        <i class="fas fa-search bg-gray-200 p-3 rounded-full lg:rounded-r-none md:rounded-l-full cursor-pointer"
+        @click="updateDropdown('search')"
+        ></i>
+        <input 
+        type="text" 
+        placeholder="Search Facebook" 
+        class="bg-gray-200 rounded-r-full py-2 focus:outline-none lg:w-64 w-0 text-gray-900"
+        @click="updateDropdown('search')"
+        >
+      
+            <!-- BARS MENU -->
+        <div class="lg:hidden">
+          <button 
+            :class="`flex md:flex ml-4 text-gray-700 hover:bg-gray-200 p-2 rounded-full focus:outline-none ${dropdown === 'bars' ? 'text-blue-700' : ''}`"
+            @click="updateDropdown('bars')"
+            >
+              <i class="fas fa-bars text-2xl justify-start"></i>
+          </button>
+        </div>
       </div>
+
 
       <!-- NAV MIDDLE -->
       <div
-       class="flex hidden lg:flex">
+       class="hidden lg:flex justify-between items-center">
         <button v-for="tab in tabs"
           :key="tab.id"
           @click="updateDropdown(tab.id)"
-          class="hover:bg-gray-200 rounded focus:outline-none"
+          class="hover:bg-gray-200 rounded focus:outline-none py-2"
           :class="dropdown === tab.id ? 'border-b-4 border-blue-600' : ''"
         >
           <i :class="`${tab.icon} text-gray-700 mx-8 text-xl ${dropdown === tab.id ? 'text-blue-700' : ''}`"></i>
         </button>
       </div>
 
-      <div class="flex md:flex lg:hidden">
-        <i class="fas fa-bars"></i>
-      </div>
 
       <!-- NAV RIGHT -->
       <div class="flex items-center">
-        <button class="flex items-center hover:bg-gray-200 rounded-full py-1 px-3 mr-2 focus:outline-none">
+        <button class="hidden lg:flex items-center hover:bg-gray-200 rounded-full py-1 px-3 mr-2 focus:outline-none sm:hidden">
           <img src="../assets/profile.jpg" class="w-10 h-10 rounded-full mr-2">
           <p class="font-semibold">{{ userName }}</p>
         </button>
@@ -47,7 +62,7 @@
       </div>
     </nav>
 
-    <!-- CARD MENU | ACCOUNT -->
+    <!-- CARD MENU  -->
     <my-account 
     v-if="dropdown === 'account'"
     :userName="userName"
@@ -66,6 +81,17 @@
     v-if="dropdown === 'create'"
     ></my-create>
 
+     <search-menu 
+    v-if="dropdown === 'search'"
+    @update-dropdown="updateDropdown('')"
+    ></search-menu>
+
+     <sidebar-menu 
+    class="absolute top-0 left-0"
+    v-if="dropdown === 'sidebar'"
+    @update-dropdown="updateDropdown('')"
+    ></sidebar-menu>
+
   </header>
 
     
@@ -77,6 +103,8 @@ import Account from '../components/menus/Dd_Account'
 import Notifications from '../components/menus/Dd_Notifications'
 import Messenger from '../components/menus/Dd_Messenger'
 import Create from '../components/menus/Dd_Create'
+import SearchMenu from '../components/menus/search_menu'
+import SideBar from './Sidebar'
 
 
 export default {
@@ -85,6 +113,8 @@ export default {
     'my-notifications': Notifications,
     'my-messenger': Messenger,
     'my-create': Create,
+    'search-menu': SearchMenu,
+    'sidebar-menu': SideBar,
   },
   data() {
     return {
@@ -114,7 +144,6 @@ export default {
       if(this.dropdown !== name) {
         return this.dropdown = name;
       } else if(this.dropdown === name) {
-
         return this.dropdown = ''
       } 
     }

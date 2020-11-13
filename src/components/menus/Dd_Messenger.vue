@@ -53,7 +53,7 @@ export default {
       if(msg.length > 30) {
       return `${msg.slice(0,30)}...`
       } else {
-      return `${msg.slice(0,30)}`
+      return msg;
       }
     },
     getImgUrl(pic) {
