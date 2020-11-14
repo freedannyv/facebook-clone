@@ -1,17 +1,33 @@
 <template>
-  <div class="w-full lg:w-3/5 bg-gray-700 h-screen">
-  <div class="grid grid-cols-5 gap-1"></div>
-    <div class="col-span-1">hello</div>
-    <div class="col-span-2">goodday</div>
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="w-full lg:w-3/5 bg-gray-700 h-screen p-4 mx-auto">
+    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1">
+      <div>
+      <story-card></story-card>
+      </div>
+      <div>
+      <story-card></story-card>
+      </div>
+      <div>
+      <story-card></story-card>
+      </div>
+      <div>
+      <story-card></story-card>
+      </div>
+      <div>
+      <story-card></story-card>
+      </div>
+      
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import StoryCard from './layouts/StoryCard'
 
+export default {
+  components: {
+    StoryCard
+  }
 }
 </script>
 

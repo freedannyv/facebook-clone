@@ -1,7 +1,7 @@
 <template>
 
 <!-- WRAPPER -->
-  <div class="w-full p-2 bg-gray-100">
+  <div class="w-full p-2 bg-gray-100 mt-2 z-10">
   
     <!-- NAME AND PROFILE PIC -->
     <button class="flex items-center w-full hover:bg-gray-200 focus:outline-none rounded py-3 px-2">
@@ -12,7 +12,7 @@
     <!-- ALL OTHER BUTTONS IN LIST -->
     <button
     class="flex items-center w-full hover:bg-gray-200 focus:outline-none rounded p-2"
-    v-for="data in SideBarData"
+    v-for="data in firstFiveInSidebar"
     :key="data.id"
     >
       <i :class="`${data.icon} ${data.class} text-xl mr-4`"></i>
@@ -48,11 +48,15 @@ export default {
     }
   },
 
-  // computed: {
-  //   firstFiveInSidebar: function() {
-  //     return this.SideBarData.slice(0,4)
-  //   }
-  // },
+  computed: {
+    firstFiveInSidebar: function() {
+      if(this.seeMore === false) {
+      return this.SideBarData.slice(0,4)
+      } else {
+        return this.SideBarData;
+      }
+    }
+  },
   props: ['userName', 'secondUserName']
 }
 </script>

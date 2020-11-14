@@ -1,6 +1,6 @@
 <template>
   <base-card 
-  class="absolute top-0 left-0 mt-16">
+  class="z-20 absolute top-0 left-0">
 
   <!-- Back Button and Search Field -->
   <div class="flex items-center">
