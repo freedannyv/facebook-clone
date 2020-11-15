@@ -91,7 +91,7 @@
     ></search-menu>
 
      <sidebar-menu 
-    class="absolute top-0 left-0 mt-16 w-screen"
+    class="absolute top-0 left-0 mt-16"
     v-if="dropdown === 'sidebar'"
     ></sidebar-menu>
 
