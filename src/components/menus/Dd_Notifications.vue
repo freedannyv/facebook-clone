@@ -1,6 +1,6 @@
 <template>
     <base-card 
-    class="absolute right-0 mr-6 max-w-xs min-w-100">
+    class="absolute right-0 md:mr-6 max-w-xs md:min-w-100">
     <div class="flex justify-between">
       <h2 class="font-bold text-2xl">Notifications</h2>
       <div>
