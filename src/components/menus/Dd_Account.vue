@@ -1,6 +1,6 @@
 <template>
     <base-card 
-    class="absolute right-0 md:mr-6 max-w-xs md:min-w-100">
+    class="absolute right-0 md:mr-6 w-screen md:w-100">
     <button class="flex items-center hover:bg-gray-300 rounded p-2 w-full">
       <img src="../../assets/profile.jpg" class="h-16 w-16 rounded-full mr-2">
       <div>

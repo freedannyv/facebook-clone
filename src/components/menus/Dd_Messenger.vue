@@ -1,6 +1,6 @@
 <template>
   <base-card
-    class="absolute right-0 md:mr-6 max-w-xs md:min-w-100">
+    class="absolute right-0 md:mr-6 w-screen md:w-100">
 
 
 <!-- CARD ICONS AT TOP -->
