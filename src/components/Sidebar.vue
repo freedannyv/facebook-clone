@@ -1,7 +1,7 @@
 <template>
 
 <!-- WRAPPER -->
-  <div class="w-full p-2 bg-gray-100 mt-2 z-10">
+  <div class="w-full p-2 bg-gray-100 mt-2 z-10 h-screen overflow-y-auto">
   
     <!-- NAME AND PROFILE PIC -->
     <button class="flex items-center w-full hover:bg-gray-200 focus:outline-none rounded py-3 px-2">

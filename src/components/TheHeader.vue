@@ -40,7 +40,7 @@
           :to="tab.id"
           class="hover:bg-gray-200 rounded focus:outline-none py-2"
         >
-          <i :class="`${tab.icon} text-gray-700 mx-8 text-xl ${dropdown === tab.id ? 'text-blue-700' : ''}`"></i>
+          <i :class="`${tab.icon} text-gray-700 mx-8 text-xl`"></i>
         </router-link>
       </div>
           
